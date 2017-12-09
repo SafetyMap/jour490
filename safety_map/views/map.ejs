@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SafetyMap</title>
+    <!-- jQuery library -->
+<!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/js/raphael.min.js"></script>
+    <script src="assets/js/morris.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUv8zbw7vTZZ1LWB4YtwqN0Ucz92iqZI4&libraries=visualization">
+    </script>
+    <!-- Morris Charts JavaScript -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet">
+    <link href="/assets/css/map.css" rel="stylesheet">
+    <script src="/assets/js/map.js"></script>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    </style>
+  </head>
+
+  <body>
+
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #55875A;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <a href="#" class="navbar-left"><img src="/SafetyMapLogo.png" style="width:40px;padding-top:5px"></a>
+                <span class="navbar-brand" style="color:#FFFFF7;font-size:30px;padding-left:25px;"><b>Safety Map</b></a></span>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li class="active"><a href="/">Safety of Neighborhood</a></li>
+              <li><a href="/route">Safety Routes</a></li>
+              <li><a href="/intro">Safety Matters</a></li>
+            </ul>
+            </div>
+          </div>
+    </nav>
+
+
+    <div id="arrow">
+      <span class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></span>
+    </div>
+
+    <div class="w" id="mydiv" >
+      <div class="t">
+        <div style="padding:3px 0 3px 0">Top 10 Safest<br/> Neighborhoods</div>
+      </div>
+      <div class="winBody" id="myrank"></div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" id="mydialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header myModalHead">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="modal-title " id="myModalLabel">Find Your Neighborhood</div>
+          </div>
+          <div class="modal-body"  style="margin:0;padding:0;">
+
+            <div class="row">
+              <h3 id="neighborhood" style="text-align:center"></h3>
+              <div id="safety-index"
+              style="border-radius:10px;min-height:100%;width:50%;background-color:#55875A;color:white;font-size:60px;text-align:center"
+              class="col-sm-offset-3"></div>
+              <div style="text-align:center">safety index (safest:100)</div>
+            </div>
+            <hr>
+            <div class="row">
+              <h3 class="col-sm-offset-1">Total Crimes in Each Month</h3>
+              <div class="col-sm-10 col-sm-offset-1">
+                <div id="morris-bar-chart"></div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+              <h3 class="col-sm-10 col-sm-offset-1">Average Data</h3>
+              <div class="js-loading text-center">
+                <h3>Loading...</h3>
+              </div>
+              <div class="col-sm-10 col-sm-offset-1">
+                <div id='morris-donut-chart'></div>
+                <div id="explain">
+                  <h4 class="donut-label"></h4>
+                  <p class="donut-text"></p>
+                </div>
+              </div>
+            </div>
+            
+            <div>
+              <h3 class="col-sm-10 col-sm-offset-1">Crime Types in Each Month</h3>
+              <div class="col-sm-10 col-sm-offset-1">
+                <div id="morris-line-chart"></div>
+              </div>
+            </div>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
+    </div>
+
+    <div id="main-content">
+      <div id="map_panel">
+        <div id="btn-panel">
+          <button class="t-btn" onclick="toggleTimeSlices(0)">3AM-9AM</button>
+          <button class="t-btn" onclick="toggleTimeSlices(1)">9AM-3PM</button>
+          <button class="t-btn" onclick="toggleTimeSlices(2)">3PM-9PM</button>
+          <button class="t-btn" onclick="toggleTimeSlices(3)">9PM-3AM</button>
+          <button class="t-btn" onclick="toggleTimeSlices(4)">Integrated</button>
+        </div>
+
+        <div id="map"></div>
+        <div id="legend">
+          <span>Safest (max: 100)</span>
+        </div>
+		<div style="font-size:10px;text-align:center;height:3%">
+		*The data was provided by Los Angeles County Department from 2013-2015.
+		</div>
+      </div>
+
+      
+    </div>
+
+    <script>
+      // This example requires the Visualization library. Include the libraries=visualization
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=visualization">
+    </script>
+
+  </body>
+</html>

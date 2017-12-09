@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Safty Routing</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        font-family: 'Alegreya', serif;
+        font-size: 20px;
+        background-color: #F5FFFA;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #origin-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-default" style="background-color: #F0FFF0;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><b>Safety Map in LA County</b></a>
+            </div>
+            <!-- <a href="http://crosstowntraffic.uscannenbergmedia.com/" class="navbar-brand navbar-right" style="padding: 0;margin-left: 0;" title="Return to the article"><img src="logo.png" style="height:100%"></a> -->
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/">Safety of Neighborhood</a></li>
+                <li class="active"><a href="/route">Safety Routes</a></li>
+                <li><a href="/intro">Safety Matters</a></li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+    <input id="origin-input" class="controls" type="text"
+        placeholder="Enter an origin location">
+
+    <input id="destination-input" class="controls" type="text"
+        placeholder="Enter a destination location">
+
+    <div id="mode-selector" class="controls">
+      <input type="radio" name="type" id="changemode-walking" checked="checked">
+      <label for="changemode-walking">Walking</label>
+
+      <input type="radio" name="type" id="changemode-transit">
+      <label for="changemode-transit">Transit</label>
+
+      <input type="radio" name="type" id="changemode-driving">
+      <label for="changemode-driving">Driving</label>
+    </div>
+
+    <div id="map"></div>
+
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+      var records = [];
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeControl: false,
+          center: {lat: 34.022121, lng: -118.285961},
+          zoom: 13
+        });
+
+        var me = new google.maps.Marker({map:map});
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+
+            me.setPosition(pos);
+            me.setTitle(pos.lat+","+pos.lng);
+            me.setLabel('Me');
+            map.setCenter(pos);
+            }, function() {
+            handleLocationError(true, me, map.getCenter());
+            });
+        }else {
+        // Browser doesn't support Geolocation
+            handleLocationError(false, me, map.getCenter());
+        }
+        new AutocompleteDirectionsHandler(map);
+      }
+
+       /**
+        * @constructor
+       */
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'WALKING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-transit', 'TRANSIT');
+        this.setupClickListener('changemode-driving', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode,
+          provideRouteAlternatives: true
+        }, function(response, status) {
+          if (status === 'OK') {
+            //console.log(JSON.stringify(response));
+            //console.log(JSON.stringify(response.routes[0].legs[0].end_location));
+            for (var i = 0; i < records.length ; i++){
+                records[i].setMap(null);
+            }
+            records = [];
+            var end = new google.maps.Marker({
+              position: response.routes[0].legs[0].end_location,
+              map: me.map,
+              title: response.routes[0].legs[0].end_address
+            });
+            records.push(end);
+            var start = new google.maps.Marker({
+              position: response.routes[0].legs[0].start_location,
+              map: me.map,
+              title: response.routes[0].legs[0].start_address
+            });
+            records.push(start);
+            start.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png')
+            var colortest = ["#FF3300", "#FF9900", "#99FF00"];
+
+            for (var i = 0; i < response.routes.length ; i++){
+              var route = response.routes[i];
+              //console.log(route.overview_path);
+              var str = '{\"type\":\"LineString\",\"coordinates\":[';
+              str += '[' + route.overview_path[0].lng() + ',' + route.overview_path[0].lat() + ']';
+
+              for (var j = 1; j < route.overview_path.length; j++){
+                  str += ',[' + route.overview_path[j].lng() + ',' + route.overview_path[j].lat() + ']';
+              }
+              str += '],\"crs\":{\"type\":\"name\",\"properties\":{\"name\":\"EPSG:4326\"}}}';
+              var count = 0;
+              $.ajax({
+                type: 'POST',
+                url: '/detect_crime',
+                data: {path: str},
+                success: function(data){
+                  //do sth
+                  //location.reload();
+                  if (data.status === 'ok') {
+                    alert(data.result[0].count);
+                  }
+                  //console.log(data);
+                  count = data.result[0].count;
+                  console.log(data);
+                }
+              });
+              
+              var path = new google.maps.Polyline({
+                path: route.overview_path,
+                geodesic: true,
+                strokeColor: colortest[i],
+                strokeOpacity: 0.6,
+                strokeWeight: 6
+              });
+              path.setMap(me.map);
+              records.push(path);
+              mouseEvent(path, i);
+
+
+
+            }
+
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+      function mouseEvent(path, i){
+          var colortest = ["#FF3300", "#FF9900", "#99FF00"];
+          google.maps.event.addListener(path, 'mouseover', function(event){
+            this.setOptions({strokeColor:'#000000',strokeWeight:8});
+          });
+          google.maps.event.addListener(path, 'mouseout', function(){
+            this.setOptions({strokeColor:colortest[i],strokeWeight:6});
+          });
+      }
+     function handleLocationError(browserHasGeolocation, myMarker, pos) {
+        myMarker.setPosition(pos);
+        myMarker.setTitle(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDUv8zbw7vTZZ1LWB4YtwqN0Ucz92iqZI4&libraries=places&callback=initMap"
+        async defer></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+  </body>
+</html>

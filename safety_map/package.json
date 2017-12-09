@@ -1,0 +1,22 @@
+{
+  "name": "safety_map",
+  "version": "1.0.0",
+  "description": "LA Safety Map",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "pg": "^7.3.0",
+    "serve-favicon": "^2.4.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "crime"
+  ],
+  "author": "me",
+  "license": "ISC"
+}

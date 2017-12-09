@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>SafetyMap</title>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Nunito" />
+   <link href="https://fonts.googleapis.com/css?family=Lekton" rel="stylesheet"> 
+   <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+  height: 100%;
+  font-family: Nunito;
+  font-size: 20px;
+  background-color: #FFFFF7;/*#F5FFFA;*/
+}
+
+h2 {
+  font-size: 45px;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #FFFFF7;
+  font-weight:bold;
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color: orange;
+  font-weight:bold;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #55875A;
+    background-color: #E7E7E7;
+}
+.panel-primary>.panel-heading, .panel-heading {
+    background-color:#55875A;
+    border-color: #55875A;
+    font-family: Lekton;
+    color: #FFFFF7;
+} 
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFF7;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: orange;
+}
+
+      #sidebar{
+        float: left;
+        width:24%;
+        padding: 8px;
+      }
+
+      #map {
+        margin-left: 24%;
+      }
+	  
+  #main-content {
+  /*margin-left: 24%;*/
+  padding-top: 70px;
+  margin-left: 1.6%;
+  margin-right: 1.6%;
+  height: 100%;  
+}
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color: #55875A; font-family: Lekton;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+                <a href="#" class="navbar-left"><img src="/SafetyMapLogo.png" style="width:40px;padding-top:5px"></a>
+                <span class="navbar-brand" style="color:#FFFFF7;font-size:30px;padding-left:25px;"><b>Safety Map</b></span>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="/">Safety of Neighborhood</a></li>
+              <li ><a href="/route">Safety Routes</a></li>
+              <li class="active"><a href="/intro">Safety Matters</a></li>
+            </ul>
+            </div>
+          </div>
+    </nav>
+
+    <div id="main-content">
+      <div class="panel panel-primary">
+          <div class="panel-heading" id="">
+            <i class="fa fa-bar-chart-o fa-fw"></i> UNDERSTANDING CRIME DATA
+          </div>
+          <div class="panel-body">
+<p>A better understanding of an area’s crime patterns can lead to safer, more informed decision-making for residents and visitors.
+</p>
+
+<p>Los Angeles and its surrounding counties are inhabited by international students, small-town Americans, and tourists from all over the world. Many of them need to make location-based decisions every day, like choosing where to live or rent, which route to take to work, or even which grocery store to shop in. But in a city where diversity is an active character, and each neighborhood has its own personality, knowing the relative safety of a neighborhood and understanding an area’s crime will facilitate better decision-making.
+</p>
+<p>
+To provide transparency and a better understanding of safe locations, Los Angeles and its surrounding areas make crime data available to the public. The statistics reflect crimes that are reported to law enforcement agencies. However, people cannot completely rely on crime data to make accurate judgments about the safety of  an area. Crime data can only be based on crimes that are reported to police, and the likelihood of people reporting crimes has nuanced, confounding variables that are unique to each neighborhood.
+</p>
+<p>            
+It is important to note that crime data is transcribed from original reports that are typed on paper. A lack of standardization in how crimes are classified can lead to inaccuracies in the data. Another aspect to take into consideration when trying to understand crime data is logistics and planning. For example, a single police station may serve a large neighborhood, deflating the number of reports, or a community with a concentrated amount of shopping centers may experience a higher number of robberies.
+</p> 
+<p>
+Los Angeles, as a city with one of the largest populations of unauthorized immigrants in the U.S. as reported by Pew Research, requires the consideration of illegal immigration as a factor when analyzing crime data. Undocumented immigrants tend to report fewer crimes for fear of being deported. “While there is no direct evidence that the decline is related to concerns within the Hispanic community regarding immigration, the department believes deportation fears may be preventing Hispanic members of the community from reporting when they are victimized,” Los Angeles Police Department said in a statement to Reuters on March 2017.
+</p> 
+<p>
+Though crime data doesn’t provide a perfectly accurate picture of public safety in an area, it does offer a fairly consistent baseline. Crime data allow citizens to make better decisions about where to live, study, work or shop. For example, it can help people know which areas of the city to avoid and at what time they would be more at risk.
+</p>
+</div>
+          <div class="panel-heading" id="">
+            <i class="fa fa-bar-chart-o fa-fw"></i> CRIME IN L.A. OVER TIME
+          </div>
+          <div class="panel-body">
+<p>As part of Los Angeles Mayor Eric Garcetti’s, plan to “increase transparency,” he opened a platform with open data so the public can have access to Crime Data from 2010 to present with information provided by the Los Angeles Police Department. This data showed when the crime occurred and the date it was reported; as well as the criminal code, location, time and information about the victim.</p>
+ 
+<p>By analyzing the data from 1,621,438 crime incidents, dated from April 10, 2010 to November 7, 2017, we can see that simple assault battery is the most common crime with 149,000 crime incidents. This was followed by burglary from a vehicle and stolen vehicles with 124,000 crime incidents, general burglary with 117,000 crime incidents, and plain petty theft ($950 & under) with 116,000 crime incidents.
+</p>
+<p>
+<script type="text/javascript" charset="UTF-8" data-socrata-domain="data.lacity.org" src="https://data.lacity.org/component/visualization/v1/socrata-visualizations-loader.js"></script>
+<a class="socrata-visualization-embed" data-embed-version="1" data-height="400" data-vif="{&quot;format&quot;:{&quot;type&quot;:&quot;visualization_interchange_format&quot;,&quot;version&quot;:2},&quot;configuration&quot;:{&quot;viewSourceDataLink&quot;:true,&quot;showValueLabels&quot;:true,&quot;showValueLabelsAsPercent&quot;:true,&quot;showOtherCategory&quot;:false},&quot;description&quot;:&quot;&quot;,&quot;series&quot;:[{&quot;color&quot;:{&quot;primary&quot;:&quot;#71abd9&quot;,&quot;secondary&quot;:&quot;#71abd9&quot;,&quot;highlight&quot;:&quot;#cccccc&quot;},&quot;dataSource&quot;:{&quot;datasetUid&quot;:&quot;7fvc-faax&quot;,&quot;dimension&quot;:{&quot;columnName&quot;:&quot;crm_cd_desc&quot;,&quot;aggregationFunction&quot;:null},&quot;domain&quot;:&quot;data.lacity.org&quot;,&quot;measure&quot;:{&quot;columnName&quot;:null,&quot;aggregationFunction&quot;:&quot;count&quot;},&quot;orderBy&quot;:{&quot;parameter&quot;:&quot;measure&quot;,&quot;sort&quot;:&quot;desc&quot;},&quot;type&quot;:&quot;socrata.soql&quot;,&quot;filters&quot;:[],&quot;limit&quot;:5},&quot;label&quot;:null,&quot;type&quot;:&quot;pieChart&quot;,&quot;unit&quot;:{&quot;one&quot;:&quot;crime incident&quot;,&quot;other&quot;:&quot;crime incidents&quot;}}],&quot;title&quot;:&quot;Most common crimes from 2010 to 2017&quot;,&quot;origin&quot;:{&quot;type&quot;:&quot;visualization_canvas&quot;,&quot;url&quot;:&quot;https://data.lacity.org/d/7y2v-9ukr&quot;}}" data-width="800" href="https://data.lacity.org/A-Safe-City/Crime-Data-from-2010-to-Present/7fvc-faax?referrer=embed" rel="external" target="_blank">View the data</a>
+</p>
+<p>After the year 2014 there is a decrease in reported cases, but not because crimes stopped occurring, but because those have not been reported to the authorities. Numbers of violent crimes may increase in the years that are to come, since the data shows that some crimes that occurred in the year 2013 and 2014, are reported to authorities until 2016 or 2017. The next chart shows how the number of violent crimes changes from the year 2010 to 2017. 
+</p>
+<p>
+<script type="text/javascript" charset="UTF-8" data-socrata-domain="data.lacity.org" src="https://data.lacity.org/component/visualization/v1/socrata-visualizations-loader.js"></script>
+<a class="socrata-visualization-embed" data-embed-version="1" data-height="600" data-vif="{&quot;configuration&quot;:{&quot;viewSourceDataLink&quot;:true,&quot;xAxisScalingMode&quot;:&quot;fit&quot;,&quot;showLegend&quot;:true},&quot;series&quot;:[{&quot;unit&quot;:{&quot;other&quot;:&quot;crime incidents&quot;,&quot;one&quot;:&quot;crime incident&quot;},&quot;color&quot;:{&quot;highlight&quot;:&quot;#cccccc&quot;,&quot;palette&quot;:&quot;categorical&quot;,&quot;primary&quot;:&quot;#71abd9&quot;},&quot;type&quot;:&quot;timelineChart&quot;,&quot;dataSource&quot;:{&quot;measure&quot;:{&quot;aggregationFunction&quot;:&quot;count&quot;},&quot;domain&quot;:&quot;data.lacity.org&quot;,&quot;orderBy&quot;:{&quot;parameter&quot;:&quot;dimension&quot;,&quot;sort&quot;:&quot;asc&quot;},&quot;filters&quot;:[{&quot;joinOn&quot;:&quot;OR&quot;,&quot;function&quot;:&quot;binaryOperator&quot;,&quot;arguments&quot;:[{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;121&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;210&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;230&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;310&quot;}],&quot;columnName&quot;:&quot;crm_cd&quot;,&quot;isHidden&quot;:true}],&quot;type&quot;:&quot;socrata.soql&quot;,&quot;datasetUid&quot;:&quot;7fvc-faax&quot;,&quot;dimension&quot;:{&quot;grouping&quot;:{&quot;columnName&quot;:&quot;crm_cd_desc&quot;},&quot;columnName&quot;:&quot;date_occ&quot;,&quot;aggregationFunction&quot;:null}},&quot;label&quot;:null}],&quot;origin&quot;:{&quot;type&quot;:&quot;visualization_canvas&quot;,&quot;url&quot;:&quot;https://data.lacity.org/d/pawn-fjhq&quot;},&quot;format&quot;:{&quot;type&quot;:&quot;visualization_interchange_format&quot;,&quot;version&quot;:2},&quot;description&quot;:&quot;&quot;,&quot;title&quot;:&quot;Violent crimes reported from 2010 to 2017&quot;}" data-width="800" href="https://data.lacity.org/A-Safe-City/Crime-Data-from-2010-to-Present/7fvc-faax?referrer=embed" rel="external" target="_blank">View the data</a>
+</p>
+<p>During the last five years (2013-2017), simple assault battery remained the most common form of crime, followed by general burglary and vehicle burglary. Aggravated assault and robbery, however, risen during the past five years.
+</p>
+<p>
+<script type="text/javascript" charset="UTF-8" data-socrata-domain="data.lacity.org" src="https://data.lacity.org/component/visualization/v1/socrata-visualizations-loader.js"></script>
+<a class="socrata-visualization-embed" data-embed-version="1" data-height="600" data-vif="{&quot;format&quot;:{&quot;type&quot;:&quot;visualization_interchange_format&quot;,&quot;version&quot;:2},&quot;configuration&quot;:{&quot;viewSourceDataLink&quot;:false,&quot;xAxisScalingMode&quot;:&quot;fit&quot;,&quot;showLegend&quot;:true},&quot;description&quot;:&quot;&quot;,&quot;series&quot;:[{&quot;color&quot;:{&quot;primary&quot;:&quot;#71abd9&quot;,&quot;highlight&quot;:&quot;#cccccc&quot;,&quot;palette&quot;:&quot;categorical2&quot;},&quot;dataSource&quot;:{&quot;datasetUid&quot;:&quot;7fvc-faax&quot;,&quot;dimension&quot;:{&quot;columnName&quot;:&quot;date_rptd&quot;,&quot;aggregationFunction&quot;:null,&quot;grouping&quot;:{&quot;columnName&quot;:&quot;crm_cd_desc&quot;}},&quot;domain&quot;:&quot;data.lacity.org&quot;,&quot;measure&quot;:{&quot;columnName&quot;:null,&quot;aggregationFunction&quot;:&quot;count&quot;},&quot;type&quot;:&quot;socrata.soql&quot;,&quot;filters&quot;:[{&quot;function&quot;:&quot;timeRange&quot;,&quot;arguments&quot;:{&quot;start&quot;:&quot;2013-06-01T00:00:00&quot;,&quot;end&quot;:&quot;2017-06-01T23:59:59&quot;},&quot;columnName&quot;:&quot;date_rptd&quot;,&quot;isHidden&quot;:true},{&quot;joinOn&quot;:&quot;OR&quot;,&quot;function&quot;:&quot;binaryOperator&quot;,&quot;arguments&quot;:[{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;BURGLARY&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;ROBBERY&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;ASSAULT WITH DEADLY WEAPON, AGGRAVATED ASSAULT&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;BATTERY - SIMPLE ASSAULT&quot;},{&quot;operator&quot;:&quot;=&quot;,&quot;operand&quot;:&quot;BURGLARY FROM VEHICLE&quot;}],&quot;columnName&quot;:&quot;crm_cd_desc&quot;,&quot;isHidden&quot;:true}],&quot;precision&quot;:null,&quot;orderBy&quot;:{&quot;parameter&quot;:&quot;dimension&quot;,&quot;sort&quot;:&quot;asc&quot;}},&quot;label&quot;:null,&quot;type&quot;:&quot;timelineChart&quot;,&quot;unit&quot;:{&quot;one&quot;:&quot;crime incident&quot;,&quot;other&quot;:&quot;crime incidents&quot;}}],&quot;title&quot;:&quot;Most common crimes from 2013 to 2017.&quot;,&quot;referenceLines&quot;:[{&quot;color&quot;:&quot;#767676&quot;,&quot;label&quot;:&quot;&quot;,&quot;uId&quot;:&quot;reference-line-11&quot;}],&quot;origin&quot;:{&quot;type&quot;:&quot;visualization_canvas&quot;,&quot;url&quot;:&quot;https://data.lacity.org/d/u7t6-kwrd&quot;}}" data-width="800" href="https://data.lacity.org/A-Safe-City/Crime-Data-from-2010-to-Present/7fvc-faax?referrer=embed" rel="external" target="_blank">View the data</a>
+</p>
+</div>
+
+</div>
+
+    </div>
+  </body>
+</html>

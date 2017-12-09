@@ -1,0 +1,95 @@
+#map {
+  padding-top: 40px;
+  height: 95%;
+  margin-right: 20px;
+  margin-left:20px;
+
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  font-family: 'Lekton', sans-serif;
+  font-size: 20px;
+  background-color: #FFFFF7;/*#F5FFFA;*/
+}
+.navbar-default .navbar-nav>li>a {
+  color: #FFFFF7;
+  font-weight:bold;
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color: orange;
+  font-weight:bold;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #55875A;
+    background-color: #E7E7E7;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFF7;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: orange;
+}
+
+h2 {
+  font-size: 45px;
+}
+
+#map_panel{
+   padding-top:20px;
+   height:100%;
+   width:100%;
+  /* background-color: pink;*/
+}
+
+
+
+#main-content {
+  /*margin-left: 24%;*/
+  padding-top: 50px;
+  height:100%;
+  /*margin-bottom:30px;*/
+}
+
+.controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      #origin-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 12px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: #fff;
+        background-color: #55875A;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }

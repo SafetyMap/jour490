@@ -1,0 +1,135 @@
+#map {
+  padding-top: 40px;
+  height: 90%;
+  margin-right: 20px;
+  margin-left:20px;
+
+}
+/* Optional: Makes the sample page fill the window. */
+html, body {
+  height: 100%;
+  font-family: 'Lekton', sans-serif;
+  font-size: 20px;
+  background-color: #FFFFF7;/*#F5FFFA;*/
+}
+
+h2 {
+  font-size: 45px;
+}
+.navbar-default .navbar-nav>li>a {
+  color: #FFFFF7;
+  font-weight:bold;
+}
+.navbar-default .navbar-nav>li>a:hover{
+  color: orange;
+  font-weight:bold;
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: #55875A;
+    background-color: #E7E7E7;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFFFF7;
+}
+
+.navbar-default .navbar-toggle:hover {
+    background-color: orange;
+}
+
+#map_panel{
+   /*padding-top:20px;*/
+   height:100%;
+   width:100%;
+  /* background-color: pink;*/
+}
+#sidebar{
+  float: left;
+  width: 24%;
+  height: 100%;
+  padding-right: 20px;
+  display:post;
+
+}
+
+#explain{
+  font-size: 14px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#main-content {
+  /*margin-left: 24%;*/
+  padding-top: 50px;
+  height:100%;
+  
+  /*margin-bottom:30px;*/
+}
+#floating-panel {
+  position: absolute;
+  top: 45px;
+  margin-left: 27%;
+  z-index: 5;
+  background-color: #fff;
+  padding: 0;/*5px;*/
+  text-align: center;
+  line-height: 30px;
+  /*padding-left: 10px;*/
+}
+#legend {
+  font-family: Arial, sans-serif;
+  background: #fff;
+  padding: 5px;
+  width: 150px;
+}
+.box {
+    height: 10px;
+    width: 20px;
+    float: left;
+}
+#togglebtn{
+   margin-left: 20px;
+   padding-top:10px;
+}
+#myModal{
+/*        width:70%;
+  height:80%;*/
+}
+#mydialog{
+
+  width:55%;
+  height:80%;
+}
+#btn-panel{
+  margin:0 20px 0 20px;text-align: center;
+  height:5%;  
+/*  padding-top: 1px;*/
+
+}
+.t-btn{
+  display:inline-flex;
+  background-color: #55875A;/*#E9AE9B;*/
+  border-radius: 5px;
+  letter-spacing:-1px;
+  height:100%;
+  color:#FFFFF7;
+  border-width:0;
+  font-size:
+}
+.w {
+  z-index:10;position:absolute; lift:10px; top:50px; width:270px; height:90%; overflow:hidden; border:2px groove grey; cursor:default; -moz-user-select:none;}
+.t { line-height:22px; height:50px; width:270px; overflow:hidden; background-color:#55875A; color:#FFFFF7; font-weight:bold; font-size:20px;/*border-bottom:10px outset grey;*/ text-align:center; }
+.winBody { width:270px; height: 100%; overflow-x:auto; overflow-y:auto; /*border-top:10px inset blue;*/ padding:10px; background-color:#FFFFF7; color:black;}
+#arrow{
+  z-index:10;position:absolute; lift:10px; top:48%; width:20px; height:40px; cursor:default; -moz-user-select:none;
+  padding-top: 10px;
+  background-color: #55875A;/*#F0FFF0*/
+}
+.rank:hover{color: orange;}
+.myModalHead{
+  text-align: center;
+  background-color: #55875A;
+  text-transform: capitalize;
+  font-weight: bold;font-size: 36px;
+}

@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>ReadMe (2)</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="safety-map">Safety Map</h1>
+
+<h4 class="mume-header" id="visit-link-httpgdtuscedu3000">visit link: <a href="http://gdt.usc.edu:3000">http://gdt.usc.edu:3000</a></h4>
+
+<h4 class="mume-header" id="source-code">source code</h4>
+
+<p>project directory on USC server:<br>
+<a href="http://gdt.usc.edu">gdt.usc.edu</a>:/var/www/html/Annenberg-IMSC/CrimeMap/safety_map<br>
+Github link: <a href="https://github.com/SafetyMap/jour490">https://github.com/SafetyMap/jour490</a></p>
+<h3 class="mume-header" id="how-to-run-it-and-kill-it">how to run it and kill it</h3>
+
+<h4 class="mume-header" id="run-it-tempararily">run it tempararily</h4>
+
+<pre class="language-">ssh xibei@gdt.usc.edu
+cd /var/www/html/Annenberg-IMSC/CrimeMap/safety_map
+node app.js
+</pre>
+<h4 class="mume-header" id="kill-it">kill it</h4>
+
+<pre class="language-">lsof -i 3000 //to see the processID
+kill -9 processID
+</pre>
+<h3 class="mume-header" id="project-folder-tree">project folder tree</h3>
+
+<pre class="language-">safety_map
+|-- controllers
+    | routeController.js
+    | testdb.js
+|-- public
+    |-- assets
+        |-- css
+            | map_routing.css
+            | map.css
+        |-- js
+            | map.js
+            | morris.min.js
+            | raphael.min.js
+        |-- json
+            | bound_sort.geojson
+            | boundtotal_.geojson
+            | bound_try_.geojson
+            | demo.geojson
+    | favicon.ico
+    | SafetyMapLogo.png
+|-- views
+    | map.ejs
+    | map_routing_test.ejs
+    | intro.ejs
+| app.js
+| package.json
+| ReadMe.md
+| aggtotal.sql
+</pre>
+<p>entry file: app.js<br>
+package dependence description: package.json</p>
+<h3 class="mume-header" id="modules-introduction">modules introduction</h3>
+
+<h4 class="mume-header" id="safety-of-neighborhood">safety of neighborhood</h4>
+
+<h5 class="mume-header" id="functionality">functionality:</h5>
+
+<ul>
+<li>Show boundary and safety index (range 0 - 100)<br>
+We use Google Map to show boundary and safety index for each neighborhood in LA with different color gradients (range 0 - 6). And each neighborhood (polygon) has its own infowindow which simply shows the name and safety index</li>
+<li>Deeper statistics for each neighborhood<br>
+When click each neighborhood on the map, a modal will pop up, which contains the detailed statistics for that neighborhood in graphs (morris jQuery library), such as total crimes for each month, most 3 frequent crime type for each month and so on</li>
+<li>Ranking over LA neighborhoods (TOP 10)<br>
+When you hover over a small picture on the left side, a ranking panel will show up where there are top 10 safest neighborhoods in LA with names. And when some item on the ranking list is clicked, our map will automatically pan to that neighborhood and show the boundary with blue borders.</li>
+<li>Safety situation for different hours<br>
+There are 4 buttons above the map which shows 4 different time periods(3AM-9AM, 9AM-3PM, 3PM-9PM, 9PM -3AM) a day. When you click any button, the map will show the safety index for each neighborhoods within that period of a day</li>
+<li>Exact crime points when zoom in<br>
+when you zoom in (level 13 or higher), the map will rerender and show exact crime points with tiny orange circles. We plan to show all crime data but there's too much data. Cannot fix the loading speed problem now. Currently we only show parts of crime points.</li>
+</ul>
+<h5 class="mume-header" id="related-files">related files:</h5>
+
+<p>views/map.ejs<br>
+public/assets/css/map.css<br>
+public/assets/js/map.js<br>
+public/assets/json/bound_sort.geojson<br>
+public/assets/json/demo.geojson<br>
+(for morris chart)<br>
+public/assets/js/morris.min.js<br>
+public/assets/js/raphael.min.js</p>
+<h5 class="mume-header" id="code-explanation">Code Explanation:</h5>
+
+<p>map.ejs: the view file, simply html, layout and text<br>
+map.css: style file for map.ejs<br>
+map.js: contains main logic</p>
+<ul>
+<li>
+<p>function loadCrimePoints:</p>
+<ul>
+<li>load raw crime points from demo.geojson file, create Google Map object with crime data and store objects to typedata array</li>
+</ul>
+</li>
+<li>
+<p>function addTypeData:</p>
+<ul>
+<li>for one type of crime, create Google Map object and store into typedata array</li>
+</ul>
+</li>
+<li>
+<p>function initMap:</p>
+<ul>
+<li>create map, an instance of styled Google Map</li>
+<li>add marker with USC geolocation to map</li>
+<li>define color gradient array</li>
+<li>import boundary for LA neighborhoods from bound_sort.geojson</li>
+<li>read information for each neighborhood such as safety index for different time periods, geolocation, create Polygon for each neighborhood and add that to map, add event listener 'click', 'mouseover','mouseout' for neighborhood where click link to the statistics modal popup event</li>
+<li>add rank information and set the ranking panel UI</li>
+<li>load crime points</li>
+<li>add legend for map to specify the color gradients and corresponding meaning</li>
+<li>add event listener 'zoom_changed' for map and link zoom level greater than or equal to 13 to showing raw crime points on map<br>
+while level less than 13 correlates to the default boundary, safety index information</li>
+</ul>
+</li>
+<li>
+<p>function addRankEvent</p>
+<ul>
+<li>a event listener for clicking rank item, each time an item on the ranking list is clicked, the map will pan to that neighborhood</li>
+</ul>
+</li>
+<li>
+<p>function toggleCrimePoints</p>
+<ul>
+<li>change type of crime points, not useful now</li>
+</ul>
+</li>
+<li>
+<p>function toggleTimeSlices</p>
+<ul>
+<li>change the safety index for neighborhoods with change of time periods of a day</li>
+</ul>
+</li>
+<li>
+<p>function addNeighborhoodStat</p>
+<ul>
+<li>add 'mouseover', 'mouseout','click' event listener for the given neighborhood</li>
+<li>for 'mouseover' and 'mouseout', simply link them to the change of the boundary style and the infowindow opening or not</li>
+<li>for 'click', it links to the statistics modal popup event.<br>
+here we process and push the statistics information to some global variables, and then call function to let modal show</li>
+</ul>
+</li>
+<li>
+<p>function handleLocationError</p>
+<ul>
+<li>this function was meant to handle error callback when there's error in browser's geolocation fetch, but our project url now starts with 'http', the program cannot even fetch geolocation, not useful now</li>
+</ul>
+</li>
+<li>
+<p>function scoreTotype</p>
+<ul>
+<li>map score 0 - 100 to color gradient 0 - 6 with 0 being the safest and 6 the least safe</li>
+</ul>
+</li>
+<li>
+<p>$(document).ready()</p>
+<ul>
+<li>define graph explanation texts</li>
+<li>add animation for ranking panel, specifically 'mouseout', 'mouseover' function for ranking panel and small picture on the left side</li>
+<li>initialize statistics graph objects using Morris library, add some animation for them</li>
+<li>add callback function for modal's 'shown.bs.modal' event.<br>
+this event occurs once the modal(show) function is called.<br>
+in the callback function, we set those graph objects with the updated data and rerender the UI</li>
+<li>call initMap to initialize most things</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="safety-route">safety route</h4>
+
+<h5 class="mume-header" id="functionality-1">functionality:</h5>
+
+<ul>
+<li>Ask for user's input and return routes<br>
+User can enter their start point and end point and choose the transportation they want to use. Then, using Google Map API, we can get all possible routes back.</li>
+<li>Segment long path into shorter path<br>
+since some route is long (e.g. from LA downtown to Santa Monica), it is meaningless to give one overall score to this long path, so we break it into smaller unit and evaluate each segment individually.</li>
+<li>Query the database and get a score back<br>
+We use node.js to send data to the backend and query the database to get the total number of crimes around the path segment and then convert the count into a safety score.</li>
+<li>Show the routes in different colors<br>
+Having the score of each path segment, we assign different colors and draw them on map using google map's polyline</li>
+</ul>
+<h5 class="mume-header" id="related-files-1">related files:</h5>
+
+<p>views/map_routing_test.ejs<br>
+public/assets/css/map_routing.css<br>
+controllers/routeController.js</p>
+<h5 class="mume-header" id="code-explanation-1">Code Explanation:</h5>
+
+<p>map_routing_test.ejs:</p>
+<ul>
+<li>
+<p>function initMap:</p>
+<ul>
+<li>create map, an instance of styled Google Map</li>
+<li>call AutocompleteDirectionsHandler function to get the routes from the start point to end point</li>
+</ul>
+</li>
+<li>
+<p>class AutocompleteDirectionsHandler:</p>
+<ul>
+<li>this basically use the tutorial in google map document</li>
+<li>reference:  <a href="https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete">https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete</a>?</li>
+<li>we modify the class member AutocompleteDirectionsHandler.prototype.route in this class to make it show different routes according to different safty score</li>
+</ul>
+</li>
+<li>
+<p>function AutocompleteDirectionsHandler.prototype.route</p>
+</li>
+<li>
+<p>by setting provideRouteAlternatives: true, the google api returns all possible routes instead of only one</p>
+</li>
+<li>
+<p>clean the former routes if either origin or destination is changed</p>
+</li>
+<li>
+<p>set markers for the origin (green marker) and destination (red marker)</p>
+</li>
+<li>
+<p>create a color set including green, yellow, orange and red (from safe to dangerous)</p>
+</li>
+<li>
+<p>response.routes will contain all possible routes. Each route is represents as an array of geo points</p>
+</li>
+<li>
+<p>when breaking the whole route, we group every ten points into a segment. For those segments, we create two arrays to store the necessary info: 1. <em>segments:</em> store the strings of the segment for database queries 2. <em>paths:</em> store the geo points for later drawing polylines</p>
+</li>
+<li>
+<p>we use ajax to send the <em>segments</em> to backend for database query and get the corresponding score back and then fraw the polyline</p>
+</li>
+<li>
+<p>add a mouse event to each segment(introduced later)</p>
+</li>
+<li>
+<p>function mouseEvent</p>
+<ul>
+<li>to view the route as a whole (combine the segmentsback to the original long route), we add a mouse event</li>
+<li>when users move mouse over a route, a black outline will be show to tell the users how the whole route look like</li>
+<li>when users move mouse out, the black outline will disappear</li>
+</ul>
+</li>
+<li>
+<p>function count2score</p>
+<ul>
+<li>the returned data is the number of crime around the segment rather than the real safty score, so we need to convert</li>
+<li>the basic idea is that higher the crime count, lower the saftey degree</li>
+<li>we check the returned data to determine the boundary points, you may change them later or improve the conversion mechanism</li>
+<li>0 stands for the safest (green) while 3 stands for the most dangerous (red)</li>
+</ul>
+</li>
+</ul>
+<p>map_routing.css: style file for map_routing_test.ejs<br>
+routeController.js: mainly implement the nearby neighborhood crime data query for a given route</p>
+<ul>
+<li>PostgreSQL database configuration</li>
+<li>use pg connection pool to optimize performance rather than single client connection each time</li>
+<li>parse the request info in JSON format into route segments array</li>
+<li>spatial query for crime cases count near each route segments
+<ul>
+<li>for 'near' we mean within 0.01 degree minus or plus range geographically)</li>
+<li>query according to the current system time (here we simply split a day into 2 parts, day and night)</li>
+<li>we create a temp sequence r to mark the segment index in original segments to maintain the segments order</li>
+<li>the sql statement:</li>
+</ul>
+</li>
+</ul>
+<pre class="language-">BEGIN
+create temp sequence r
+select count(*), st.rnum from (
+  select nextval(&apos;r&apos;) as rnum, geom from (
+    select ST_GeomFromGeoJSON(unnest(ARRAY[&apos;GEOJSON segment&apos;,...])) as geom)
+    as tmp ) as st, public.aggtotal as agg
+where ST_DWithin(st.geom, agg.latlng, 0.01) is true
+and (extract(hour from incident_date) either at daytime or night)
+group by st.rnum;
+COMMIT
+</pre>
+<ul>
+<li>after executing the sql query
+<ul>
+<li>fail, return status fail for different errors</li>
+<li>success, return the query results, and the index of current route (obtain from request info) in JSON format</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="safety-matters">safety matters</h4>
+
+<h5 class="mume-header" id="functionality-2">functionality:</h5>
+
+<ul>
+<li>Give an analysis of the crime data in LA county.</li>
+<li>Give some data visulization of tear trend of crime data</li>
+</ul>
+<h5 class="mume-header" id="related-files-2">related files:</h5>
+
+<p>views/intro.ejs</p>
+<h5 class="mume-header" id="code-explanation-2">Code Explanation:</h5>
+
+<ul>
+<li>This is a simple html file</li>
+<li>Data visualization:
+<ul>
+<li>the charts are generated on <a href="https://data.lacity.org">https://data.lacity.org</a>, and they provides the code to insert in the webpage</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="database">database</h4>
+
+<p>PostgreSQL with PostGis spatial extension</p>
+<ul>
+<li>database: crime_map</li>
+<li>user: xibei</li>
+<li>table: aggtotal<br>
+store the crime cases info including the geolocation and crime info such as crime_date, neighborhood id('bid' field)</li>
+<li>schema: refer 'aggtotal.sql'</li>
+<li>index built: column 'latlng'</li>
+</ul>
+<h4 class="mume-header" id="backend-framework">backend framework</h4>
+
+<p>backend language: Node.js<br>
+framework: express, an MVC framework</p>
+<ul>
+<li>model: none</li>
+<li>view: use ejs view engine to create view templates for html files</li>
+<li>controller: currently only 1 routeController</li>
+<li>routing:</li>
+</ul>
+<pre class="language-">request type | routing url   | action type  | controller       | page redirect to
+get             /              normal           none              map
+get             /route         normal           none              map_routing_test
+get             /intro         normal           none              intro
+post            /detect_crime  Ajax             routeController   none
+</pre>
+<h5 class="mume-header" id="author">author:</h5>
+
+<p>Xi Chen: <a href="mailto:771486569@qq.com">771486569@qq.com</a><br>
+Bei Gao: <a href="mailto:beigao@usc.edu">beigao@usc.edu</a></p>
+<h5 class="mume-header" id="data-resource-provided-by-prof-yao-yi-chiang">data resource provided by Prof. Yao-Yi Chiang</h5>
+
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#safety-map">Safety Map</a><br>
+* <a href="#visit-link-httpgdtuscedu3000">visit link: http://gdt.usc.edu:3000</a><br>
+* <a href="#source-code">source code</a><br>
+* <a href="#how-to-run-it-and-kill-it">how to run it and kill it</a><br>
+* <a href="#run-it-tempararily">run it tempararily</a><br>
+* <a href="#kill-it">kill it</a><br>
+* <a href="#project-folder-tree">project folder tree</a><br>
+* <a href="#modules-introduction">modules introduction</a><br>
+* <a href="#safety-of-neighborhood">safety of neighborhood</a><br>
+* <a href="#functionality">functionality:</a><br>
+* <a href="#related-files">related files:</a><br>
+* <a href="#code-explanation">Code Explanation:</a><br>
+* <a href="#safety-route">safety route</a><br>
+* <a href="#functionality-1">functionality:</a><br>
+* <a href="#related-files-1">related files:</a><br>
+* <a href="#code-explanation-1">Code Explanation:</a><br>
+* <a href="#safety-matters">safety matters</a><br>
+* <a href="#functionality-2">functionality:</a><br>
+* <a href="#related-files-2">related files:</a><br>
+* <a href="#code-explanation-2">Code Explanation:</a><br>
+* <a href="#database">database</a><br>
+* <a href="#backend-framework">backend framework</a><br>
+* <a href="#author">author:</a><br>
+* <a href="#data-resource-provided-by-prof-yao-yi-chiang">data resource provided by Prof. Yao-Yi Chiang</a></li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>
