@@ -16,27 +16,6 @@ html, body {
 h2 {
   font-size: 45px;
 }
-.navbar-default .navbar-nav>li>a {
-  color: #FFFFF7;
-  font-weight:bold;
-}
-.navbar-default .navbar-nav>li>a:hover{
-  color: orange;
-  font-weight:bold;
-}
-
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
-    color: #55875A;
-    background-color: #E7E7E7;
-}
-
-.navbar-default .navbar-toggle .icon-bar {
-    background-color: #FFFFF7;
-}
-
-.navbar-default .navbar-toggle:hover {
-    background-color: orange;
-}
 
 #map_panel{
    /*padding-top:20px;*/
