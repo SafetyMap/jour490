@@ -34,6 +34,7 @@ safety_map
         |-- css
             | map_routing.css
             | map.css
+            | navbar.css
         |-- js
             | map.js
             | morris.min.js
@@ -75,6 +76,7 @@ when you zoom in (level 13 or higher), the map will rerender and show exact crim
 ##### related files:
 views/map.ejs
 public/assets/css/map.css
+public/assets/css/navbar.css
 public/assets/js/map.js
 public/assets/json/bound_sort.geojson
 public/assets/json/demo.geojson
@@ -146,6 +148,7 @@ We use node.js to send data to the backend and query the database to get the tot
 Having the score of each path segment, we assign different colors and draw them on map using google map's polyline
 ##### related files:
 views/map_routing_test.ejs
+public/assets/css/navbar.css
 public/assets/css/map_routing.css
 controllers/routeController.js
 ##### Code Explanation:
@@ -212,6 +215,7 @@ COMMIT
 - Give some data visulization of tear trend of crime data
 ##### related files:
 views/intro.ejs
+public/assets/css/navbar.css
 ##### Code Explanation:
 
 - This is a simple html file
